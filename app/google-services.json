@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "611257979679",
+    "firebase_url": "https://my-life-in-weeks.firebaseio.com",
+    "project_id": "my-life-in-weeks",
+    "storage_bucket": "my-life-in-weeks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611257979679:android:44044f5843be2ac140162a",
+        "android_client_info": {
+          "package_name": "com.sherinf.mylifeinweeks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611257979679-d6ksjrg5ahmegbd1uqlmofq90uikadbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2jcS5dXt_xpiawrfcXBya-cyZycu0CyI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611257979679-d6ksjrg5ahmegbd1uqlmofq90uikadbv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
