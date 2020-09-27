@@ -1,38 +1,58 @@
 package com.shervinf.mylifeinweeks;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
 
     MyRecyclerViewAdapter adapter;
 
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // data to populate the RecyclerView with
-        String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48","1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"};
-
-        // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        int numberOfColumns = 6;
+//        toolbarSetup();
+        
+        ArrayList<Integer> numList = new ArrayList<>();
+        for (int i = 0; i < 360;i++){
+            numList.add(i+1);
+        }
+        recyclerView = findViewById(R.id.rvNumbers);
+        int numberOfColumns = 13;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        adapter = new MyRecyclerViewAdapter(this, data);
+        adapter = new MyRecyclerViewAdapter(this, numList);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
+
+
     @Override
     public void onItemClick(View view, int position) {
-//        Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
         Toast.makeText(this, "" +adapter.getItem(position) + "    " + position, Toast.LENGTH_SHORT).show();
+        view.setBackgroundColor(Color.BLACK);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.add_dob_menu, menu);
+        return true;
     }
 }

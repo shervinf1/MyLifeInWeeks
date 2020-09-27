@@ -2,17 +2,18 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:layout_margin="10dp"
     android:elevation="10dp"
-    android:layout_width="50dp"
-    app:cardCornerRadius="16dp"
-    android:layout_height="50dp">
+    android:layout_margin="3dp"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    app:cardCornerRadius="8dp">
 
     <TextView
         android:id="@+id/info_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary"
+        />
 
 </androidx.cardview.widget.CardView>
