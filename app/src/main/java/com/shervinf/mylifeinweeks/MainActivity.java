@@ -1,26 +1,37 @@
 package com.shervinf.mylifeinweeks;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.GridLayout;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
 
     MyRecyclerViewAdapter adapter;
-
     private RecyclerView recyclerView;
+    DatePickerDialog picker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "" +adapter.getItem(position) + "    " + position, Toast.LENGTH_SHORT).show();
-        view.setBackgroundColor(Color.BLACK);
+
     }
 
 
@@ -55,4 +66,40 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         getMenuInflater().inflate(R.menu.add_dob_menu, menu);
         return true;
     }
+
+    private void setDate(){
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(MainActivity.this,R.style.DialogTheme,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                LocalDate startDate = LocalDate.of(year,monthOfYear,dayOfMonth);
+                                LocalDate endDate = LocalDate.of(cldr.get(Calendar.YEAR),cldr.get(Calendar.MONTH),cldr.get(Calendar.DAY_OF_MONTH));
+                                long weeksInYear = ChronoUnit.WEEKS.between(startDate, endDate);
+                                Toast.makeText(MainActivity.this, "" + weeksInYear, Toast.LENGTH_SHORT).show();
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.dob_calender:
+                setDate();
+        }
+        return true;
+    }
+
+
+
 }
