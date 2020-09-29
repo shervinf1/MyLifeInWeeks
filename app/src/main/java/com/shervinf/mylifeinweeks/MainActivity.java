@@ -37,18 +37,14 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        toolbarSetup();
         
-        ArrayList<Integer> numList = new ArrayList<>();
-        for (int i = 0; i < 360;i++){
-            numList.add(i+1);
-        }
+//        ArrayList<Integer> numList = new ArrayList<>();
+//        for (int i = 0; i < 360;i++){
+//            numList.add(i+1);
+//        }
         recyclerView = findViewById(R.id.rvNumbers);
         int numberOfColumns = 13;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        adapter = new MyRecyclerViewAdapter(this, numList);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
     }
 
 
@@ -79,7 +75,11 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 LocalDate startDate = LocalDate.of(year,monthOfYear,dayOfMonth);
                                 LocalDate endDate = LocalDate.of(cldr.get(Calendar.YEAR),cldr.get(Calendar.MONTH),cldr.get(Calendar.DAY_OF_MONTH));
-                                long weeksInYear = ChronoUnit.WEEKS.between(startDate, endDate);
+                                int weeksInYear = Math.toIntExact(ChronoUnit.WEEKS.between(startDate, endDate));
+                                int numOfItems = 5110;
+                                adapter = new MyRecyclerViewAdapter(MainActivity.this, numOfItems,weeksInYear);
+                                adapter.setClickListener(MainActivity.this);
+                                recyclerView.setAdapter(adapter);
                                 Toast.makeText(MainActivity.this, "" + weeksInYear, Toast.LENGTH_SHORT).show();
                             }
                         }, year, month, day);

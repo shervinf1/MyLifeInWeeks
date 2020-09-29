@@ -4,5 +4,5 @@
     <item android:id="@+id/dob_calender"
         android:icon="@drawable/ic_baseline_calendar_today_24"
         app:showAsAction="always"
-        android:title="Add Date of Birth" />
+        android:title="@string/add_date_of_birth" />
 </menu>

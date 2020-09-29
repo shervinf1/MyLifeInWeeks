@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:elevation="10dp"
+    android:id="@+id/cardViewItem"
     android:layout_margin="3dp"
     android:layout_width="25dp"
     android:layout_height="25dp"
     app:cardCornerRadius="8dp">
 
-    <TextView
-        android:id="@+id/info_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@color/colorPrimary"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/info_text"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="@color/colorPrimary"-->
+<!--        />-->
 
 </androidx.cardview.widget.CardView>
